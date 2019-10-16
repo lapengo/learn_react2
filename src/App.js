@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
 import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 
@@ -8,28 +8,32 @@ import Image from './components/Image';
 import Navbar from './components/Navbar';
 
 
-function App() {
+class App extends Component {
 
   state = {
-    login: false
+    login: true
   }
-  
-  return (
-    <BrowserRouter>
 
-      <Navbar />
+  render() {
+    return (
+      <BrowserRouter>
 
-      <div className="container">
-        <div className="row">
-          <Route exact path='/' component={Home} />
-          <Route path='/About' component={About} />
-          <Route path='/Image' rende={() => (
-            this.state.login ? <Image /> : (<Redirect to='/' />)
-          )} />
+        <Navbar />
+
+        <div className="container">
+          <div className="row">
+            <Route exact path='/' component={Home} />
+            <Route path='/About' component={About} />
+            {/* <Route path='/image' render={()=>(
+              this.state.login ? <Image /> : (<Redirect to='/' />)
+            )} /> */}
+            <Route path='/image' render={(props)=> <Image {...props} login={this.state.login} />} />
+          </div>
         </div>
-      </div>
-    </BrowserRouter>
-  );
+      </BrowserRouter>
+    );
+  }
+
 }
 
 export default App;
