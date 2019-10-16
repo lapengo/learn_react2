@@ -1,8 +1,10 @@
 import React from "react";
+import GambarHeader from './GambarHeader';
 
 const Home = () => {
   return (
     <div className="col">
+      <GambarHeader />
       <h1>Home</h1>
       <p>
         Quis ex deserunt nulla quis ipsum Lorem elit magna eiusmod. Proident
